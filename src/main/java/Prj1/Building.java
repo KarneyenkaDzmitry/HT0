@@ -1,5 +1,6 @@
 package Prj1;
 
+import Prj1.exceptions.IncorrectNameOfRoomException;
 import Prj1.exceptions.UniqueNameException;
 
 import java.util.Map;
@@ -14,7 +15,7 @@ public class Building {
     private static int count = 1;
 
     /*It keeps uniqueName of a building.
-    * The variable has to be unique.*/
+     * The variable has to be unique.*/
     private String uniqueName;
 
     /*It keeps map of rooms in a sorted state. It means that rooms have to have different names
@@ -90,9 +91,15 @@ public class Building {
         mapOfRooms.put(room.getUniqueName(), room);
     }
 
-    /*Getter. It returns map of rooms (@see mapOfRooms)*/
-    public Room getRoom(String uniqueName) {
-        return mapOfRooms.get(uniqueName);
+    /*Getter. It returns map of rooms (@see mapOfRooms)
+    * @throw IncorrectNameOfRoomException.*/
+    public Room getRoom(String uniqueName) throws IncorrectNameOfRoomException {
+        if (mapOfRooms.containsKey(uniqueName)) {
+            return mapOfRooms.get(uniqueName);
+        } else {
+            throw new IncorrectNameOfRoomException("\nRoom \"" + uniqueName + "\" doesn't exist in the building \""
+                    + this.uniqueName+"\"");
+        }
     }
 
     /*Output in console specific information about a building.
@@ -115,7 +122,6 @@ public class Building {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(uniqueName, getMapOfRooms());
     }
 }

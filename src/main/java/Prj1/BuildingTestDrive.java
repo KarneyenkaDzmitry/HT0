@@ -1,5 +1,6 @@
 package Prj1;
 
+import Prj1.exceptions.IncorrectNameOfRoomException;
 import Prj1.exceptions.UniqueNameException;
 import Prj1.items.*;
 import Prj1.exceptions.IlluminanceTooMuchException;
@@ -9,7 +10,7 @@ import Prj1.exceptions.SpaceUsageTooMuchException;
 * Tester can use it for test the module Building. He can make different tests like negative or positive...*/
 public class BuildingTestDrive {
 
-    public static void main(String[] args) throws SpaceUsageTooMuchException, IlluminanceTooMuchException, UniqueNameException {
+    public static void main(String[] args) throws SpaceUsageTooMuchException, IlluminanceTooMuchException, UniqueNameException, IncorrectNameOfRoomException {
         Building building = new Building("Здание 1");
         building.addRoom("Комната 1", 100, 3);
         building.addRoom("Комната 2", 5, 2);
@@ -18,6 +19,8 @@ public class BuildingTestDrive {
         building.addRoom(5);
         building.addRoom(7);
 
+        //building.getRoom("Komnata 3").add(new Lamp(299));
+        building.getRoom("Комната 3").add(new Lamp(299));
         building.getRoom("Комната 1").add(new Lamp(150));
         building.getRoom("Комната 1").add(new Lamp(150));
         building.getRoom("Комната 1").add(new Lamp(150));
@@ -27,7 +30,7 @@ public class BuildingTestDrive {
         building.getRoom("Комната 1").add(new Lamp(250));
         building.getRoom("Комната 1").add(new Lamp(250));
         building.getRoom("Комната 1").add(new Lamp(250));
-        building.getRoom("Комната 1").add(new Lamp(250));
+        //building.getRoom("Комната 1").add(new Lamp(250));
         //building.getRoom("Комната 1").add(new Lamp(250));
         Table table = new Table("Стол письменный", 3);
         building.getRoom("Комната 1").add(table);

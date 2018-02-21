@@ -134,7 +134,7 @@ public class Room {
         resultString.append(" " + uniqueName + "\n");
         resultString.append("  Освещённость = " + currentLighting + " лк");
         if (currentLighting < MINLIGHTING) {
-            resultString.append("  Warning! TooSmallLighting! Please, add some lamps to the room!");
+            resultString.append("  Warning! Too small illuminance! Minimum is 300 lk. Please, add some lamps to the room!");
         }
         resultString.append(strLightingHelper());
         resultString.append("\n  Площадь = " + area + " м^2");
